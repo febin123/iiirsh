@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-dtd80ntdbl%r74bpw0r11*l2-xg#i#s%()jlw^ykzfd(z2v%it
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.vercel.app']
+
 
 
 # Application definition
@@ -112,6 +112,7 @@ USE_I18N = True
 
 USE_TZ = True
 
+ALLOWED_HOST = ['*']
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/

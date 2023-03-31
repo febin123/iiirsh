@@ -1,0 +1,1 @@
+web: gunicorn irishGram.wsgi --log-file
