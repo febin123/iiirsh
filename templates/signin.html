@@ -1,5 +1,5 @@
 {% load static %}
-
+{% load socialaccount %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,13 +32,14 @@
                 <div class="flex items-center lg:justify-between justify-around">
 
                     <a href="trending.html">
-                       <b><h1 style="font-size: 1.5rem;">IrishGram</h1></b>
+                       <b><h1 style="font-size: 1.5rem;" id="AppName"></h1></b>
                     </a>
 
                     <div class="capitalize flex font-semibold hidden lg:block my-2 space-x-3 text-center text-sm">
                         
                         <a href="/signup" class="bg-pink-500 pink-500 px-6 py-3 rounded-md shadow text-white">Register</a>
                     </div>
+
 
                 </div>
             </div>
@@ -69,13 +70,13 @@
                     <input type="text" name="username" placeholder="Username" class="bg-gray-200 mb-2 shadow-none dark:bg-gray-800" style="border: 1px solid #d3d5d8 !important;">
                     <input type="password" name="password" placeholder="password" class="bg-gray-200 mb-2 shadow-none dark:bg-gray-800" style="border: 1px solid #d3d5d8 !important;">
                     <div class="flex justify-between my-4">
-                        <!-- <div class="checkbox">
-                            <input type="checkbox" id="chekcbox1" checked>
-                            <label for="chekcbox1"><span class="checkbox-icon"></span>Remember Me</label>
-                        </div> -->
+                   
                         <a href="#"> Forgot Your Password? </a>
                     </div>
-                    <button type="submit" class="bg-gradient-to-br from-pink-500 py-3 rounded-md text-white text-xl to-red-400 w-full">Login</button>
+                    <button type="submit" class="bg-gradient-to-br from-pink-500 py-3 rounded-md text-white text-xl to-red-400 w-full" id="login-txt"></button>
+                    
+
+
                     <div class="text-center mt-5 space-x-2">
                         <p class="text-base"> Not registered? <a href="/signup" class=""> Create a account </a></p>
                     </div>
@@ -93,52 +94,16 @@
                     <a href="#"> Terms</a>
                     <a href="#"> Privacy</a>
                 </div>
-                <p class="capitalize"> © copyright 2020 by socol</p>
+                <p class="capitalize" id="copyright"> </p>
             </div>
         </div>
 
     </div>
 
 
-    <!--<script>
-        
-        (function (window, document, undefined) {
-            'use strict';
-            if (!('localStorage' in window)) return;
-            var nightMode = localStorage.getItem('gmtNightMode');
-            if (nightMode) {
-                document.documentElement.className += ' dark';
-            }
-        })(window, document);
-    
-    
-        (function (window, document, undefined) {
-    
-            'use strict';
-    
-            // Feature test
-            if (!('localStorage' in window)) return;
-    
-            // Get our newly insert toggle
-            var nightMode = document.querySelector('#night-mode');
-            if (!nightMode) return;
-    
-            // When clicked, toggle night mode on or off
-            nightMode.addEventListener('click', function (event) {
-                event.preventDefault();
-                document.documentElement.classList.toggle('dark');
-                if (document.documentElement.classList.contains('dark')) {
-                    localStorage.setItem('gmtNightMode', true);
-                    return;
-                }
-                localStorage.removeItem('gmtNightMode');
-            }, false);
-    
-        })(window, document);
-    </script>-->
 
-    <!-- Scripts
-    ================================================== -->
+
+    <!-- Script-->
     <script src="{% static 'assets/js/tippy.all.min.js' %}"></script>
     <script src="{% static 'assets/js/jquery-3.3.1.min.js' %}"></script>
     <script src="{% static 'assets/js/uikit.js' %}"></script>
@@ -146,6 +111,24 @@
     <script src="{% static 'assets/js/custom.js' %}"></script>
 
 
+    <script>
+        //json file
+        let text = '{"irishGram":[' +
+'{"AppName":"IrishGram" },' +
+'{"login":"Login"},' +
+'{"copyright":"© copyright 2023 by IrishGram"}]}';
+
+const obj = JSON.parse(text);
+document.getElementById("AppName").innerHTML =
+obj.irishGram[0].AppName ;
+
+document.getElementById("login-txt").innerHTML =
+obj.irishGram[1].login ;
+
+document.getElementById("copyright").innerHTML =
+obj.irishGram[2].copyright ;
+
+    </script>
 </body>
 
 
